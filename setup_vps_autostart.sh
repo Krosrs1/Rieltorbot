@@ -116,7 +116,7 @@ Type=simple
 User=${RUN_USER}
 WorkingDirectory=${ROOT_DIR}
 EnvironmentFile=${ENV_FILE}
-ExecStart=${VENV_DIR}/bin/python ${ROOT_DIR}/userbot.py --config ${CONFIG_PATH} --db \$DB_PATH --session \$SESSION_NAME
+ExecStart=${VENV_DIR}/bin/python ${ROOT_DIR}/userbot.py --config ${CONFIG_PATH} --db "${DB_PATH}" --session "${SESSION_NAME}"
 Restart=always
 RestartSec=5
 
