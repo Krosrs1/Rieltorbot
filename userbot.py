@@ -358,7 +358,7 @@ async def run_bot(args: argparse.Namespace) -> None:
                     await client.send_message(notify_target, build_notification(event, decision), parse_mode="markdown")
                 except FloodWaitError as exc:
                     logging.warning("FloodWait while sending notification: %s seconds", exc.seconds)
-                    except RPCError as exc:
+                except RPCError as exc:
                     logging.error("Failed to send notification: %s", exc)
 
             if processed_count % 100 == 0:
