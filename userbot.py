@@ -289,7 +289,7 @@ def build_notification(event, decision: LeadDecision) -> str:
 async def run_bot(args: argparse.Namespace) -> None:
     try:
         from telethon import TelegramClient, events
-        from telethon.errors import FloodWaitError, RpcError
+        from telethon.errors import FloodWaitError, RPCError
     except ModuleNotFoundError as exc:
         raise RuntimeError(
             "Telethon is not installed. Install dependencies with: pip install -r requirements.txt"
@@ -358,7 +358,7 @@ async def run_bot(args: argparse.Namespace) -> None:
                     await client.send_message(notify_target, build_notification(event, decision), parse_mode="markdown")
                 except FloodWaitError as exc:
                     logging.warning("FloodWait while sending notification: %s seconds", exc.seconds)
-                except RpcError as exc:
+                    except RPCError as exc:
                     logging.error("Failed to send notification: %s", exc)
 
             if processed_count % 100 == 0:
